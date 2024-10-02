@@ -4,11 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.unimes.dao.ProdutoDao
 import br.unimes.dao.R
 import br.unimes.model.Produto
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+//git push --set-upstream https://github.com/BrunoJss/dao.git main
 
 class MainActivity : AppCompatActivity() {
     val dao = ProdutoDao()
@@ -28,10 +31,12 @@ class MainActivity : AppCompatActivity() {
 
             val prod = Produto(valorNome, valorPreco)
             dao.addProduto(prod)
+            Toast.makeText(this, "Salvo com sucesso!", Toast.LENGTH_SHORT).show()
         }
 
         fabLista.setOnClickListener{
             val intent = Intent(this, ListaProdutoActivity::class.java)
+            startActivity(intent)
         }
 
     }
